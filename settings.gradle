@@ -1,0 +1,9 @@
+include ':app'
+include ':lib_base'
+
+include ':arch_lifeceycle'
+include ':arch_paging3'
+include ':arch_hilt'
+include ':arch_room'
+
+rootProject.name = "StartJetpack"

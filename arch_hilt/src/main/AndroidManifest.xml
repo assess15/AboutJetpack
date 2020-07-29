@@ -1,0 +1,23 @@
+<manifest package="com.assess15.about_hilt"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <application
+        android:name="com.assess15.arch_hilt.HiltApp"
+        android:allowBackup="false"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:supportsRtl="true"
+        android:theme="@style/HiltAppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="Instantiatable">
+
+        <activity android:name="com.assess15.arch_hilt.simple.Hilt_SimpleActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+    </application>
+</manifest>

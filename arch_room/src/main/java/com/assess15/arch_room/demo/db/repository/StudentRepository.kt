@@ -1,0 +1,46 @@
+package com.assess15.jetpacks.room.db.repository
+
+import androidx.lifecycle.LiveData
+import com.assess15.jetpacks.room.db.dao.StudentDao
+import com.assess15.jetpacks.room.db.entity.StudentEntity
+
+/**
+ * 数据操作
+ */
+
+class StudentRepository(private val studentDao: StudentDao) {
+
+    var allStudentLD: LiveData<List<StudentEntity>> = studentDao.queryAllStudent()
+
+    fun getAllStudent(): LiveData<List<StudentEntity>> {
+        return allStudentLD
+    }
+
+    /**
+     * insert
+     */
+    suspend fun insert(vararg stu: StudentEntity) {
+        studentDao.insertStudent(*stu)
+    }
+
+    /**
+     * delete
+     */
+    suspend fun delete() {
+        studentDao.deleteAllStudent()
+    }
+
+    /**
+     * update
+     */
+    suspend fun update() {
+        studentDao.updateStudent()
+    }
+
+    /**
+     * query
+     */
+    suspend fun queryAllStudent() {
+        studentDao.queryAllStudent()
+    }
+}
