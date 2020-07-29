@@ -1,4 +1,4 @@
-package com.assess15.jetpacks.room.db.entity
+package com.assess15.arch_room.demo.db.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

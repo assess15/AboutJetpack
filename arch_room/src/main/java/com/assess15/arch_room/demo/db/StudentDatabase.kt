@@ -1,11 +1,11 @@
-package com.assess15.jetpacks.room.db
+package com.assess15.arch_room.demo.db
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.assess15.jetpacks.room.db.dao.StudentDao
-import com.assess15.jetpacks.room.db.entity.StudentEntity
+import com.assess15.arch_room.demo.db.dao.StudentDao
+import com.assess15.arch_room.demo.db.entity.StudentEntity
 
 @Database(
     entities = [StudentEntity::class],

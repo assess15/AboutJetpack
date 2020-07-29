@@ -1,4 +1,4 @@
-package com.assess15.jetpacks.room.ui.view
+package com.assess15.arch_room.demo.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.assess15.jetpacks.R
-import com.assess15.jetpacks.room.db.entity.StudentEntity
-import com.assess15.jetpacks.room.ui.adapter.StudentListAdapter
+import com.assess15.arch_room.R
+import com.assess15.arch_room.demo.db.entity.StudentEntity
+import com.assess15.arch_room.demo.ui.adapter.StudentListAdapter
 import com.assess15.jetpacks.room.ui.vm.RoomViewModel
-import kotlinx.android.synthetic.main.jetpack_activity_room.*
+import kotlinx.android.synthetic.main.activity_room.*
 
 class RoomActivity : AppCompatActivity() {
 
@@ -18,7 +18,7 @@ class RoomActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.jetpack_activity_room)
+        setContentView(R.layout.activity_room)
 
         vm = ViewModelProvider(this).get(RoomViewModel::class.java)
 

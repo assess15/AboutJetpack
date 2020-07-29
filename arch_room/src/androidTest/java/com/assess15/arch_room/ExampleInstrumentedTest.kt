@@ -1,12 +1,11 @@
 package com.assess15.arch_room
 
-import androidx.test.platform.app.InstrumentationRegistry
+import android.content.Intent
 import androidx.test.ext.junit.runners.AndroidJUnit4
-
+import androidx.test.platform.app.InstrumentationRegistry
+import com.assess15.arch_room.demo.ui.view.RoomActivity
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -16,9 +15,10 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
+    fun startRoom() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.assess15.about_room.test", appContext.packageName)
+        val intent = Intent(appContext, RoomActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        appContext.startActivity(intent)
     }
 }

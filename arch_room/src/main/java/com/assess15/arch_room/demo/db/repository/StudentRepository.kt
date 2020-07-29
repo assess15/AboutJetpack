@@ -1,8 +1,8 @@
 package com.assess15.jetpacks.room.db.repository
 
 import androidx.lifecycle.LiveData
-import com.assess15.jetpacks.room.db.dao.StudentDao
-import com.assess15.jetpacks.room.db.entity.StudentEntity
+import com.assess15.arch_room.demo.db.dao.StudentDao
+import com.assess15.arch_room.demo.db.entity.StudentEntity
 
 /**
  * 数据操作

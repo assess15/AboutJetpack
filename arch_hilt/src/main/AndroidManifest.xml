@@ -1,6 +1,6 @@
-<manifest package="com.assess15.about_hilt"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.assess15.arch_hilt">
 
     <application
         android:name="com.assess15.arch_hilt.HiltApp"

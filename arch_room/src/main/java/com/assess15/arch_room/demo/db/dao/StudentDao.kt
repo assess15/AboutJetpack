@@ -1,8 +1,8 @@
-package com.assess15.jetpacks.room.db.dao
+package com.assess15.arch_room.demo.db.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.assess15.jetpacks.room.db.entity.StudentEntity
+import com.assess15.arch_room.demo.db.entity.StudentEntity
 
 @Dao
 interface StudentDao {

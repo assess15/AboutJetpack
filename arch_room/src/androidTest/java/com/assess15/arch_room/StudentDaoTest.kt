@@ -6,9 +6,9 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.assess15.jetpacks.room.db.StudentDatabase
-import com.assess15.jetpacks.room.db.dao.StudentDao
-import com.assess15.jetpacks.room.db.entity.StudentEntity
+import com.assess15.arch_room.demo.db.StudentDatabase
+import com.assess15.arch_room.demo.db.dao.StudentDao
+import com.assess15.arch_room.demo.db.entity.StudentEntity
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.junit.After

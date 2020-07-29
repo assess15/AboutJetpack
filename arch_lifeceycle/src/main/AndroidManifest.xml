@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.assess15.about_lifeceycle">
+    package="com.assess15.arch_lifecycle">
 
     <application
         android:allowBackup="true"

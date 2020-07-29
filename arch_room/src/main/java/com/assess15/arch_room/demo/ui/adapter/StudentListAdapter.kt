@@ -1,4 +1,4 @@
-package com.assess15.jetpacks.room.ui.adapter
+package com.assess15.arch_room.demo.ui.adapter
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.assess15.jetpacks.R
-import com.assess15.jetpacks.room.db.entity.StudentEntity
+import com.assess15.arch_room.R
+import com.assess15.arch_room.demo.db.entity.StudentEntity
 
 class StudentListAdapter internal constructor(
     context: Context
@@ -21,7 +21,7 @@ class StudentListAdapter internal constructor(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordViewHolder {
-        val itemView = inflater.inflate(R.layout.jetpack_recyclerview_item, parent, false)
+        val itemView = inflater.inflate(R.layout.layout_item, parent, false)
         return WordViewHolder(itemView)
     }
 

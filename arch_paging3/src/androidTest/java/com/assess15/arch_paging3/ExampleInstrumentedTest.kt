@@ -1,7 +1,9 @@
 package com.assess15.arch_paging3
 
+import android.content.Intent
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.assess15.arch_paging3.ui.view.PagingActivity
 
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -16,9 +18,10 @@ import org.junit.Assert.*
 @RunWith(AndroidJUnit4::class)
 class ExampleInstrumentedTest {
     @Test
-    fun useAppContext() {
-        // Context of the app under test.
+    fun startPaging() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.assess15.about_paging3.test", appContext.packageName)
+        val intent = Intent(appContext, PagingActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        appContext.startActivity(intent)
     }
 }
