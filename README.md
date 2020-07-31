@@ -1,12 +1,14 @@
 ## Android Jetpack 组件
 
-> 基础、架构、行为、界面
+![jetpack](./png/android-jetpack.jpg)
 
 ### 架构
 
-#### Lifecycle
+#### Lifecycles
 
 ![Lifecycle](./png/lifecycle-states.png)
+
+---
 
 #### Room
 
@@ -20,6 +22,8 @@
 
 [Paging3详细](./about_paging3/Paging3.md)
 
+![Paging3架构](./png/paging3-library-architecture.png)
+
 
 ---
 
@@ -28,6 +32,26 @@
 [Hilt详细](./about_hilt/Hilt.md)
 
 [文档](https://developer.android.com/training/dependency-injection/hilt-android)
+
+---
+
+#### LiveData
+
+[LiveData](./arch_livedata/LiveData.md)
+
+---
+
+#### ViewModel
+
+[ViewModel](./arch_viewmodel/ViewModel.md)
+
+
+---
+
+### 界面
+
+#### ViewPager2
+
 
 
 ---

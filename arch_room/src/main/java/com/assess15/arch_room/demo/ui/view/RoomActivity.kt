@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.assess15.arch_room.R
 import com.assess15.arch_room.demo.db.entity.StudentEntity
 import com.assess15.arch_room.demo.ui.adapter.StudentListAdapter
-import com.assess15.jetpacks.room.ui.vm.RoomViewModel
+import com.assess15.arch_room.demo.ui.vm.RoomViewModel
 import kotlinx.android.synthetic.main.activity_room.*
 
 class RoomActivity : AppCompatActivity() {

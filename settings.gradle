@@ -1,9 +1,15 @@
 include ':app'
 include ':lib_base'
 
-include ':arch_lifeceycle'
-include ':arch_paging3'
+// arch
 include ':arch_hilt'
+include ':arch_lifecycle'
+include ':arch_livedata'
+include ':arch_paging3'
 include ':arch_room'
+include ':arch_viewmodel'
+
+// ui
+include ':ui_viewpager2'
 
 rootProject.name = "StartJetpack"

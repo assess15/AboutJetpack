@@ -8,7 +8,7 @@
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
-        android:theme="@style/HiltAppTheme"
+        android:theme="@style/BaseAppTheme"
         android:usesCleartextTraffic="true"
         tools:ignore="Instantiatable">
 

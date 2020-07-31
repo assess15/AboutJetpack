@@ -1,4 +1,4 @@
-package com.assess15.jetpacks.room.db.repository
+package com.assess15.arch_room.demo.db.repository
 
 import androidx.lifecycle.LiveData
 import com.assess15.arch_room.demo.db.dao.StudentDao

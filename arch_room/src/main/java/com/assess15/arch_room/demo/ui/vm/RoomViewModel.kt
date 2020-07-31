@@ -1,4 +1,4 @@
-package com.assess15.jetpacks.room.ui.vm
+package com.assess15.arch_room.demo.ui.vm
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.assess15.arch_room.demo.db.StudentDatabase
 import com.assess15.arch_room.demo.db.dao.StudentDao
 import com.assess15.arch_room.demo.db.entity.StudentEntity
-import com.assess15.jetpacks.room.db.repository.StudentRepository
+import com.assess15.arch_room.demo.db.repository.StudentRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
