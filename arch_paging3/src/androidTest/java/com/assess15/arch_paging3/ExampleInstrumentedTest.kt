@@ -3,12 +3,10 @@ package com.assess15.arch_paging3
 import android.content.Intent
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.assess15.arch_paging3.ui.view.PagingActivity
+import com.assess15.arch_paging3.paging3_room.ui.view.PagingRoomActivity
 
 import org.junit.Test
 import org.junit.runner.RunWith
-
-import org.junit.Assert.*
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,7 +18,7 @@ class ExampleInstrumentedTest {
     @Test
     fun startPaging() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        val intent = Intent(appContext, PagingActivity::class.java)
+        val intent = Intent(appContext, PagingRoomActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         appContext.startActivity(intent)
     }

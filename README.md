@@ -2,9 +2,15 @@
 
 ![jetpack](./png/android-jetpack.jpg)
 
+版本说明:
+- alpha:内部测试版,bug多多；
+- beta:公开测试版本，bug少点，支持尝鲜；-
+-  rc:候选版本，功能不增，和发布版本一致，修修小bug；
+- - stable:稳定版本，你尽管用，bug能找到是福气。
+
 ### 架构
 
-#### Lifecycles
+#### Lifecycle
 
 ![Lifecycle](./png/lifecycle-states.png)
 
@@ -24,6 +30,7 @@
 
 ![Paging3架构](./png/paging3-library-architecture.png)
 
+![data-flow](./png/paging-library-data-flow.webp)
 
 ---
 
@@ -33,11 +40,15 @@
 
 [文档](https://developer.android.com/training/dependency-injection/hilt-android)
 
+
+
 ---
 
 #### LiveData
 
 [LiveData](./arch_livedata/LiveData.md)
+
+
 
 ---
 
@@ -46,13 +57,33 @@
 [ViewModel](./arch_viewmodel/ViewModel.md)
 
 
+
+---
+
+### WorkManager
+
+[codelab](https://codelabs.developers.google.com/codelabs/android-workmanager/#0)
+
+---
+
+
+
 ---
 
 ### 界面
 
 #### ViewPager2
 
+---
 
+#### MotionLayout
+
+[MotionLayout2](./ui_motionlayout/MotionLayout.md)
 
 ---
 
+#### AutoFill
+
+[codelab](https://codelabs.developers.google.com/codelabs/optimize-autofill/#0)
+
+---

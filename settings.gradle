@@ -7,9 +7,14 @@ include ':arch_lifecycle'
 include ':arch_livedata'
 include ':arch_paging3'
 include ':arch_room'
+include ':arch_appstartup'
 include ':arch_viewmodel'
+include ':arch_workmanager'
 
 // ui
+include ':ui_autofill'
+include ':ui_constraintlayout2'
+include ':ui_motionlayout'
 include ':ui_viewpager2'
 
 rootProject.name = "StartJetpack"

@@ -5,6 +5,7 @@ if (isModule.toBoolean()) {
 }
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion 30
@@ -18,6 +19,8 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField 'String', 'BASE_URL', "\"https://wanandroid.com/\""
     }
 
     compileOptions {
@@ -33,10 +36,17 @@ android {
 dependencies {
     implementation project(':lib_base')
 
+    // paging3
     def paging_version = "3.0.0-alpha03"
     implementation "androidx.paging:paging-runtime:$paging_version"
 
-    testImplementation 'junit:junit:4.12'
+    // room
+    api "androidx.room:room-ktx:2.2.5"
+    api "androidx.room:room-runtime:2.2.5"
+    kapt "androidx.room:room-compiler:2.2.5"
+//    kapt "android.arch.persistence.room:compiler:1.1.1"
+
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
