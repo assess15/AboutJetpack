@@ -3,10 +3,10 @@
 ![jetpack](./png/android-jetpack.jpg)
 
 版本说明:
-- alpha:内部测试版,bug多多；
-- beta:公开测试版本，bug少点，支持尝鲜；-
--  rc:候选版本，功能不增，和发布版本一致，修修小bug；
-- - stable:稳定版本，你尽管用，bug能找到是福气。
+- alpha:内部测试版
+- beta:公开测试版本，bug少点，支持尝鲜；
+- rc:候选版本，和发布版本一致
+- stable:稳定版本
 
 ### 架构
 
@@ -36,9 +36,10 @@
 
 #### Hilt
 
+[官方文档](https://developer.android.com/training/dependency-injection/hilt-android)
+
 [Hilt详细](./about_hilt/Hilt.md)
 
-[文档](https://developer.android.com/training/dependency-injection/hilt-android)
 
 
 

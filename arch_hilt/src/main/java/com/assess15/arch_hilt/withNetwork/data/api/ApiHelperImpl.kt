@@ -10,5 +10,4 @@ import javax.inject.Inject
 
 class ApiHelperImpl @Inject constructor(private val apiService: ApiService) : ApiHelper {
     override suspend fun getUser(): Response<List<User>> = apiService.getUser()
-    override suspend fun fff(): Response<String> = apiService.ffss()
 }

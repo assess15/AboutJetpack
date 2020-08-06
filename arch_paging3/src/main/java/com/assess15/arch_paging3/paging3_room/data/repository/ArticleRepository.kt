@@ -3,19 +3,22 @@ package com.assess15.arch_paging3.paging3_room.data.repository
 import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import com.assess15.arch_paging3.paging3_room.base.BaseRepository
 import com.assess15.arch_paging3.paging3_room.comm.RetrofitClient
-import com.assess15.arch_paging3.paging3_room.data.model.DataList
+import com.assess15.arch_paging3.paging3_room.data.model.ArticleList
+import kotlinx.coroutines.flow.Flow
 
+//class ArticleRepository(private val database: ArticleDatabase) : BaseRepository() {
 class ArticleRepository : BaseRepository() {
 
     fun getArticleData() = Pager(config) {
         ArticleDataSource()
     }.flow
 
-    inner class ArticleDataSource : PagingSource<Int, DataList>() {
-        override suspend fun load(params: LoadParams<Int>): LoadResult<Int, DataList> {
+    inner class ArticleDataSource : PagingSource<Int, ArticleList>() {
+        override suspend fun load(params: LoadParams<Int>): LoadResult<Int, ArticleList> {
             return try {
                 val page = params.key ?: 0
                 val result = RetrofitClient.reqApi.getData(page)
@@ -38,4 +41,13 @@ class ArticleRepository : BaseRepository() {
                 pageSize = 20
             )
         }
+//
+//    fun getArticle(): Flow<PagingData<ArticleList>> {
+//        val pagingSourceFactory = { database.articleDao().queryArticle() }
+//        return Pager(
+//            config,
+//            remoteMediator = ArticleRemoteMonitor(database),
+//            pagingSourceFactory = pagingSourceFactory
+//        ).flow
+//    }
 }

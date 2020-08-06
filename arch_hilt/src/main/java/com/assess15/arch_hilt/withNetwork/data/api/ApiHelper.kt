@@ -5,5 +5,4 @@ import retrofit2.Response
 
 interface ApiHelper {
     suspend fun getUser(): Response<List<User>>
-    suspend fun fff() :Response<String>
 }

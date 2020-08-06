@@ -7,7 +7,4 @@ import retrofit2.http.GET
 interface ApiService {
     @GET("users")
     suspend fun getUser():Response<List<User>>
-
-    @GET
-    suspend fun ffss():Response<String>
 }

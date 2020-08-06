@@ -12,14 +12,12 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Scope
 import javax.inject.Singleton
 
 @Module
 @InstallIn(ApplicationComponent::class)
 class ApplicationModule {
-
-    @Provides
-    fun provideBaseUrl() = BuildConfig.BASE_URL
 
     @Provides
     @Singleton
@@ -43,13 +41,5 @@ class ApplicationModule {
             .baseUrl(BASE_URL)
             .client(okHttpClient)
             .build()
-
-    @Provides
-    @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
-
-    @Provides
-    @Singleton
-    fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper
 
 }

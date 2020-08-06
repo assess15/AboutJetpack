@@ -7,12 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.assess15.arch_paging3.R
-import com.assess15.arch_paging3.paging3_room.data.model.DataList
+import com.assess15.arch_paging3.paging3_room.data.model.ArticleList
 
 class PagingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     private val txt = view.findViewById<TextView>(R.id.tvName)
-    private var data: DataList? = null
+    private var data: ArticleList? = null
 
     init {
         view.setOnClickListener {
@@ -32,7 +32,7 @@ class PagingViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         }
     }
 
-    fun bind(list: DataList) {
+    fun bind(list: ArticleList) {
         data = list
         txt.text = list.title
     }

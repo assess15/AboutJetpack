@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,19 +30,31 @@ class PagingRoomActivity : BaseActivity<PagingViewModel>() {
     }
 
     override val viewModel: PagingViewModel by viewModels {
-        InjectFactory.provideViewModelFactory()
+        InjectFactory.provideViewModelFactory(this)
     }
 
     private fun initAdapter() {
 
         rvList.layoutManager = LinearLayoutManager(this)
+
         // set footer
         rvList.adapter = adapter.withLoadStateFooter(PagingFooterAdapter(adapter))
+
         lifecycleScope.launchWhenCreated {
-            viewModel.getArticleData().observe(this@PagingRoomActivity, Observer {
+            viewModel.getArticles(this@PagingRoomActivity, Observer {
                 adapter.submitData(lifecycle, it)
             })
         }
+
+        /**
+        lifecycleScope.launchWhenCreated {
+        //            viewModel.getArticle().observe(this@PagingRoomActivity, Observer {
+        //                adapter.submitData(lifecycle, it)
+        //            })
+        viewModel.getArticles(this@PagingRoomActivity, Observer {
+        adapter.submitData(lifecycle, it)
+        })
+        }**/
 
         job?.cancel()
         //监听刷新状态当刷新完成之后关闭刷新
@@ -86,6 +97,5 @@ class PagingRoomActivity : BaseActivity<PagingViewModel>() {
         super.onDestroy()
         job?.cancel()
     }
-
 
 }

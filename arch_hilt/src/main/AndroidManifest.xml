@@ -2,6 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.assess15.arch_hilt">
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <application
         android:name="com.assess15.arch_hilt.HiltApp"
         android:allowBackup="false"

@@ -5,22 +5,22 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.assess15.arch_paging3.paging3_room.data.model.DataList
+import com.assess15.arch_paging3.paging3_room.data.model.ArticleList
 import com.assess15.arch_paging3.paging3_room.ui.adapter.viewholder.PagingViewHolder
 
-class PagingAdapter : PagingDataAdapter<DataList, PagingViewHolder>(
+class PagingAdapter : PagingDataAdapter<ArticleList, PagingViewHolder>(
     diff
 ) {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view)
 
     companion object {
-        val diff = object : DiffUtil.ItemCallback<DataList>() {
+        val diff = object : DiffUtil.ItemCallback<ArticleList>() {
 
-            override fun areItemsTheSame(oldItem: DataList, newItem: DataList): Boolean =
+            override fun areItemsTheSame(oldItem: ArticleList, newItem: ArticleList): Boolean =
                 oldItem.id == newItem.id
 
-            override fun areContentsTheSame(oldItem: DataList, newItem: DataList): Boolean =
+            override fun areContentsTheSame(oldItem: ArticleList, newItem: ArticleList): Boolean =
                 oldItem == newItem
         }
     }

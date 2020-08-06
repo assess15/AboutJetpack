@@ -1,12 +1,8 @@
 package com.assess15.arch_paging3.paging3_room.data.model
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
-
 data class Article(
     val curPage: Int,
-    val datas: List<DataList>,
+    val datas: List<ArticleList>,
     val offset: Int,
     val over: Boolean,
     val pageCount: Int,
@@ -15,7 +11,7 @@ data class Article(
 )
 
 //@Entity(tableName = "article")
-data class DataList(
+data class ArticleList(
 //    @PrimaryKey val id: Int,
 //    @ColumnInfo(name = "title") val title: String,
 
@@ -47,7 +43,7 @@ data class DataList(
     val shareUser: String,
     val superChapterId: Int,
     val superChapterName: String,
-    val tags: List<Tag>,
+//    val tags: List<Tag>,
     val type: Int,
     val userId: Int,
     val visible: Int,

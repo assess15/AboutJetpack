@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setupUI() {
-        recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = MainAdapter(arrayListOf())
         recyclerView.addItemDecoration(
             DividerItemDecoration(
