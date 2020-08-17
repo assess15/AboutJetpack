@@ -1,8 +1,12 @@
-## HILT
+## Jetpack Hilt 上手
 
 >  Dagger Hilt (依赖注入) , Jetpack , 协程(Kotlin)
 
-### 1. 添加依赖
+[资料参考](https://juejin.im/post/6845166891325997069)
+
+[资料参考](https://juejin.im/post/6844904191920439303#heading-11)
+
+### 1、 添加依赖
 
 **build.gradle(:app)**
 
@@ -81,7 +85,9 @@ allprojects {
 }
 ```
 
-### 2. 注解
+---
+
+### 2、 注解含义
 
 #### ① @HiltAndroidApp
 
@@ -150,3 +156,275 @@ allprojects {
 #### ⑦ @ViewModelInject
 
 > 使用在ViewModel中
+
+#### Hilt中组件的生命周期：
+
+| Hilt提供的组件            | 创建对应的生命周期     | 结束对应的生命周期      | 作用范围               |
+| ------------------------- | ---------------------- | ----------------------- | ---------------------- |
+| ApplicationComponent      | Application#onCreate() | Application#onDestroy() | @Singleton             |
+| ActivityRetainedComponent | Activity#onCreate()    | Activity#onDestroy()    | @ActivityRetainedScope |
+| ActivityComponent         | Activity#onCreate()    | Activity#onDestroy()    | @ActivityScoped        |
+| FragmentComponent         | Fragment#onAttach()    | Fragment#onDestroy()    | @FragmentScoped        |
+| ViewComponent             | View#super()           | View destroyed          | @ViewScoped            |
+| ViewWithFragmentComponent | View#super()           | View destroyed          | @ViewScoped            |
+| ServiceComponent          | Service#onCreate()     | Service#onDestory()     | @ViewScoped            |
+
+---
+
+### 3、Hilt 使用
+
+#### 简单使用
+
+```Kotlin
+class HiltTest @Inject constructor() {
+    fun hiltTest() { Log.e("----------->", "hiltTest: ") }
+}
+```
+
+```Kotlin
+@HiltAndroidApp
+class BaseApplication : Application() {
+    // 通过@Inject注入到BaseApplication中
+    @Inject
+    lateinit var hiltTest: HiltTest
+    override fun onCreate() {
+        super.onCreate()
+        hiltTest.hiltTest()
+    }
+}
+```
+
+```Kotlin
+@AndroidEntryPoint
+class HomeNavigationActivity : BaseLayoutActivity<TestViewModel>() {
+    override fun setViewModel(): Class<TestViewModel> =TestViewModel::class.java
+    override fun layout(): Int {
+        return R.layout.home_navigation
+    }
+    override fun bindView() { }
+}
+```
+
+```Kotlin
+// fragment 中使用，需要本身所依赖的 activity 添加注解
+@AndroidEntryPoint
+class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
+    //使用 @Inject 从组件中获取依赖进行注入
+    @Inject
+    lateinit var hiltTest: HiltTest
+    override fun layout(): Int {
+        return R.layout.frag_one
+    }
+    override fun bindView(rootView: View) {
+        //对象已经注入，直接调用即可
+        one.text = hiltTest.hiltTest()
+    }
+}
+```
+
+#### 在第三方组件的使用
+
+```Kotlin
+//对应的生命周期为 application
+@Module
+@InstallIn(ApplicationComponent::class)
+object TestModule {
+    /** 每次都是新的实例 **/
+    @Provides
+    fun bindHiltTest(): HiltTest {
+        Log.e("--------bindHiltTest----")
+        return HiltTest()
+    }
+    /** 全局复用同一个实例 **/
+    @Provides
+    @Singleton
+    fun bindSingTest(): Test {
+        Log.e("--------bindSingTest----")
+        return Test()
+    }
+}
+
+```
+
+```Kotlin
+@AndroidEntryPoint
+class TestActivity :AppCompactActivity() {
+    @Inject
+    lateinit var hiltTest: HiltTest
+    @Inject
+    lateinit var hiltTest1: HiltTest
+    @Inject
+    lateinit var test1: Test
+    @Inject
+    lateinit var test2: Test
+}
+```
+
+#### 在ViewModel 的使用
+
+```Kotlin
+class HomeContentViewModel @ViewModelInject  constructor(
+    private val response: HomeContentRepository,
+    @Assisted val  state: SavedStateHandle
+) : ViewModel() {
+    private val liveData by lazy { MutableLiveData<String>() }
+    val testLiveData: LiveData<String> by lazy { liveData }
+    fun requestBaiDu() {
+        launchVmHttp {
+            liveData.postValue(response.requestBaidu())
+        }
+    }
+}
+```
+
+```Kotlin
+@ActivityScoped
+class HomeContentRepository @Inject constructor() : BaseRepository() {
+    suspend fun requestBaidu(): String {
+        return LvHttp.createApi(ApiServices::class.java).baidu()
+    }
+}
+```
+
+```Kotlin
+@AndroidEntryPoint
+class HomeContentActivity : AppCompatActivity() {
+    //生成 ViewModel 的实例
+    private val viewModel by viewModels<HomeContentViewModel>()
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_home_content)
+        viewModel.requestBaiDu()
+        viewModel.testLiveData.observe(this, Observer {
+            ToastUtils.show(it)
+        })
+}
+
+```
+
+#### 在 Room 的使用
+
+```Kotlin
+@Module
+@InstallIn(ApplicationComponent::class)
+object RoomModel {
+    /**
+     * @Provides：常用于被 @Module 标记类的内部方法，并提供依赖对象
+     * @Singleton：提供单例
+     */
+    @Provides
+    @Singleton
+    fun provideAppDataBase(application: Application): AppDataBase {
+        return Room
+            .databaseBuilder(application, AppDataBase::class.java, "knif.db")
+            .fallbackToDestructiveMigration()
+            .allowMainThreadQueries()
+            .build()
+    }
+    @Provides
+    @Singleton
+    fun providerUserDao(appDataBase: AppDataBase): UserDao {
+        return appDataBase.getUserDao()
+    }
+}
+```
+
+```Kotlin
+class FragmentTwo : BaseLayoutFragment<FragTwoViewModel>() {
+    @Inject
+    lateinit var userDao: UserDao
+}
+```
+
+#### @Binds 进行接口注入
+
+> Binds：必须注释一个抽象函数，抽象函数的返回值是实现的接口。通过添加具有接口实现类型的唯一参数来指定实现。
+
+```Kotlin
+interface User {
+    fun getName(): String
+}
+```
+
+```Kotlin
+@Module
+@InstallIn(ApplicationComponent::class)
+abstract class UserModule {
+    @Binds
+    abstract fun getUser(userImpl: UserImpl): User
+}
+```
+
+```Kotlin
+@Module
+@InstallIn(ApplicationComponent::class)
+abstract class UserModule {
+    @Binds
+    abstract fun getUser(userImpl: UserImpl): User
+}
+```
+
+```Kotlin
+@AndroidEntryPoint
+class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
+    @Inject
+    lateinit var user: User
+}
+```
+
+#### @Qualifier 提供同一接口，不同的实现，解决注解迷失问题
+
+```Kotlin
+class UserAImpl @Inject constructor() : User {
+    override fun getName(): String {
+        return "345"
+    }
+}
+```
+
+```Kotlin
+class UserBImpl @Inject constructor() : User {
+    override fun getName(): String {
+        return "Lv"
+    }
+}
+```
+
+```Kotlin
+@Qualifier
+annotation class A
+@Qualifier
+annotation class B
+```
+
+```Kotlin
+@Module
+@InstallIn(ApplicationComponent::class)
+abstract class UserAModule {
+    @A
+    @Singleton
+    @Binds
+    abstract fun getUserA(userImpl: UserAImpl): User
+}
+@Module
+@InstallIn(ActivityComponent::class)
+abstract class UserBModule {
+    @B
+    @ActivityScoped
+    @Binds
+    abstract fun getUserB(userImpl: UserBImpl): User
+}
+```
+
+```Kotlin
+@AndroidEntryPoint
+class FragmentOne : BaseLayoutFragment<FragOneViewModel>() {
+    @A
+    @Inject
+    lateinit var userA: User
+    @B
+    @Inject
+    lateinit var userB: User
+}
+```
+
