@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
-import com.assess15.arch_room.demo.db.StudentDatabase
+import com.assess15.arch_room.demo.db.StudentDatabaseBuilder
 import com.assess15.arch_room.demo.db.dao.StudentDao
 import com.assess15.arch_room.demo.db.entity.StudentEntity
 import com.assess15.arch_room.demo.db.repository.StudentRepository
@@ -18,7 +18,7 @@ class RoomViewModel(context: Application) : AndroidViewModel(context) {
     val student: LiveData<List<StudentEntity>>
 
     init {
-        val instance = StudentDatabase.getInstance(context)
+        val instance = StudentDatabaseBuilder.getInstance(context)
         studentDao = instance.studentDao()
         repository = StudentRepository(studentDao)
         student = repository.allStudentLD
