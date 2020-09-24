@@ -3,9 +3,9 @@
 ![jetpack](./png/android-jetpack.jpg)
 
 版本说明:
-- alpha:内部测试版
-- beta:公开测试版本，bug少点，支持尝鲜；
-- rc:候选版本，和发布版本一致
+- alpha:内测版
+- beta :公测版
+- rc   :候选版本，和发布版本一致
 - stable:稳定版本
 
 ### 架构
