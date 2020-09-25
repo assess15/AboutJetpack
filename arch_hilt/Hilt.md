@@ -1,5 +1,7 @@
 ## Jetpack Hilt 上手
 
+*Hilt 不支持多模块使用*
+
 >  Dagger Hilt (依赖注入) , Jetpack , 协程(Kotlin)
 
 [资料参考](https://juejin.im/post/6845166891325997069)

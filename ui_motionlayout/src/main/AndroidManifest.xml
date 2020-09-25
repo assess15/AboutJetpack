@@ -7,14 +7,14 @@
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme">
 
-        <activity android:name=".MotionLayoutActivity">
+        <activity android:name="com.vaulert.ui_motionlayout.MotionLayoutActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginActivity" />
+        <activity android:name="com.vaulert.ui_motionlayout.LoginActivity" />
 
     </application>
 </manifest>

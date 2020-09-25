@@ -9,7 +9,7 @@
         android:theme="@style/BaseAppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".ViewModelActivity">
+        <activity android:name="com.vaulert.arch_viewmodel.ViewModelActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -6,7 +6,7 @@
         android:theme="@style/BaseAppTheme">
 
         <activity
-            android:name=".ConstraintLayoutActivity"
+            android:name="com.vaulert.ui_constraintlayout2.ConstraintLayoutActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

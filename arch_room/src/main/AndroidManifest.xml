@@ -3,13 +3,14 @@
 
     <application
         android:allowBackup="false"
+        android:label="@string/app_name"
         android:largeHeap="true"
         android:requestLegacyExternalStorage="true"
         android:supportsRtl="true"
         android:theme="@style/BaseAppTheme"
         android:usesCleartextTraffic="true">
 
-        <activity android:name=".demo.ui.view.RoomActivity">
+        <activity android:name="com.vaulert.arch_room.demo.ui.view.RoomActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
