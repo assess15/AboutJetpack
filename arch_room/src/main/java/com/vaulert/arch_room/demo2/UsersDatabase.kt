@@ -16,14 +16,11 @@ abstract class UsersDatabase : RoomDatabase() {
 
         fun getInstance(context: Context): UsersDatabase = INSTANCE
             ?: synchronized(this) {
-            INSTANCE
-                ?: buildDatabase(
-                    context
-                )
-                    .also { INSTANCE = it }
-        }
+                INSTANCE ?: buildDatabase(context).also { INSTANCE = it }
+            }
 
         private fun buildDatabase(context: Context) =
-            Room.databaseBuilder(context.applicationContext, UsersDatabase::class.java, "user.db").build()
+            Room.databaseBuilder(context.applicationContext, UsersDatabase::class.java, "user.db")
+                .build()
     }
 }

@@ -44,7 +44,7 @@ class ViewPager2Activity : AppCompatActivity() {
 
         viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        viewPager.adapter = ViewPager2Adapter(this,title)
+        viewPager.adapter = ViewPager2Adapter(this, title)
 
         TabLayoutMediator(tabs, viewPager) { tab, position ->
             tab.text = title[position]

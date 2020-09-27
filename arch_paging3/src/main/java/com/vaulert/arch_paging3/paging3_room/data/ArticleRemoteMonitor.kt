@@ -1,13 +1,13 @@
-//package com.assess15.arch_paging3.paging3_room.data
+//package com.vaulert.arch_paging3.paging3_room.data
 //
 //import androidx.paging.ExperimentalPagingApi
 //import androidx.paging.LoadType
 //import androidx.paging.PagingState
 //import androidx.paging.RemoteMediator
 //import androidx.room.withTransaction
-//import com.assess15.arch_paging3.paging3_room.comm.RetrofitClient
-//import com.assess15.arch_paging3.paging3_room.data.database.ArticleDatabase
-//import com.assess15.arch_paging3.paging3_room.data.model.ArticleList
+//import com.vaulert.arch_paging3.paging3_room.comm.RetrofitClient
+//import com.vaulert.arch_paging3.paging3_room.data.database.ArticleDatabase
+//import com.vaulert.arch_paging3.paging3_room.data.model.ArticleList
 //import retrofit2.HttpException
 //import java.io.IOException
 //

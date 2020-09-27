@@ -1,15 +1,15 @@
-### Room
+## Room
 
-@Dao
+**@Dao**
 
 Data Assess Object 数据访问对象
 
 包含增删改查，注意包含耗时操作,需要在子线程中操作
 
-@Query
-@Update
-@Insert
-@Delete
+- @Query
+- @Update
+- @Insert
+- @Delete
 
 ```Kotlin
 @Dao
@@ -27,9 +27,9 @@ interface StudentDao {
 }    
 ```
 
+---
 
-
-@Entity
+**@Entity**
 
 ```Kotlin
 @Entity(tableName = "student")
@@ -44,7 +44,9 @@ data class StudentEntity(
 )
 ```
 
-@Database
+---
+
+**@Database**
 
 标记的类必须是抽象类,完整示例:
 
@@ -59,19 +61,54 @@ abstract class StudentDatabase : RoomDatabase() {
 }
 ```
 
-@TypeConverters
+---
 
-一般Room中的Entity存储的类型不包括,Any,List等类型
+**@TypeConverters**
+
+一般Room中的Entity存储的类型不包括,Any,List等类型,需要使用@TypeConverters处理List类型
+
+```
+@Entity(tableName = "user")
+@TypeConverters(CarConverters::class)
+data class User(
+    @PrimaryKey
+    val userId: String,
+    val userName: String,
+    val userAge: String,
+    val cars: List<Car>
+)
+
+data class Car(val name: String, val color: String)
+```
+
+```
+class CarConverters {
+
+    @TypeConverter
+    fun stringToObject(value: String): List<Car> {
+        val type = object : TypeToken<List<Car>>() {}.type
+        return Gson().fromJson(value, type)
+    }
+
+    @TypeConverter
+    fun objectToString(list: List<Car>): String {
+        val gson = Gson()
+        return gson.toJson(list)
+    }
+}
+```
 
 
 
 ---
 
+
+
 ### Q& A
 
 Q1
 
-错误: Cannot figure out how to save this field into database. You can consider adding a type converter for it. - children in com.assess15.lib_common.database.entities.Article错误: Cannot figure out how to read this field from a cursor. - children in com.assess15.lib_common.database.entities.Article
+错误: Cannot figure out how to save this field into database. You can consider adding a type converter for it. - children in com.vaulert.lib_common.database.entities.Article错误: Cannot figure out how to read this field from a cursor. - children in com.vaulert.lib_common.database.entities.Article
 FAILURE: Build failed with an exception.
 
 Execution failed for task ':lib_network:kaptDebugKotlin'.
@@ -79,7 +116,9 @@ Execution failed for task ':lib_network:kaptDebugKotlin'.
    > java.lang.reflect.InvocationTargetException (no error message)
 
 A1
-Room不支持直接存储列表的功能,或者包含不支持的类型字段:Any,List,一般会提示哪个字段出现问题
+Room不支持直接存储列表的功能,或者包含不支持的类型字段:Any,List,一般会提示哪个字段出现问题,通过@TypeConverters自定义类型解决
+
+---
 
 Q2
 Room 数据库限制存储数据的个数,例如:只存入10条数据

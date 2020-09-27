@@ -12,7 +12,6 @@ android {
     buildToolsVersion "29.0.3"
 
     defaultConfig {
-        applicationId "com.assess15.startup"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
@@ -31,7 +30,7 @@ dependencies {
     implementation project(':lib_base')
 
     // startup
-    api "androidx.startup:startup-runtime:1.0.0-alpha02"
+    api "androidx.startup:startup-runtime:1.0.0-beta01"
     // timber
     api "com.jakewharton.timber:timber:4.7.1"
 

@@ -6,15 +6,17 @@ import androidx.room.*
 interface UserDao {
 
     @Query("select * from user")
-    fun queryUser(): List<User>
+    suspend fun queryUser(): List<User>
 
     @Update
-    fun updateUser(user: User)
+    suspend fun updateUser(user: User)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertUser(vararg user: User)
+    suspend fun insertUser(vararg user: User)
 
     @Delete
-    fun deleteUser(user: User)
+    suspend fun deleteUser(user: User)
 
+    @Query("DELETE FROM user")
+    suspend fun clearUser()
 }

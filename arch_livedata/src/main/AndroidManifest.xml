@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.assess15.arch_livedata">
+    package="com.vaulert.arch_livedata">
 
     <application
         android:allowBackup="false"

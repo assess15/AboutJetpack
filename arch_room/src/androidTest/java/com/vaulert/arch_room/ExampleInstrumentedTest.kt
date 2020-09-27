@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.vaulert.arch_room.demo.ui.view.RoomActivity
+import com.vaulert.arch_room.demo2.UserActivity
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -18,6 +19,14 @@ class ExampleInstrumentedTest {
     fun startRoom() {
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         val intent = Intent(appContext, RoomActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        appContext.startActivity(intent)
+    }
+
+    @Test
+    fun start() {
+        val appContext = InstrumentationRegistry.getInstrumentation().targetContext
+        val intent = Intent(appContext, UserActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         appContext.startActivity(intent)
     }
