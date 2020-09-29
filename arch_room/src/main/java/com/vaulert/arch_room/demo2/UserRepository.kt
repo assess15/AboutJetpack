@@ -1,5 +1,7 @@
 package com.vaulert.arch_room.demo2
 
+import androidx.lifecycle.LiveData
+
 class UserRepository constructor(private val database: UsersDatabase) {
 
     suspend fun insertUser(user: User) {
@@ -27,5 +29,9 @@ class UserRepository constructor(private val database: UsersDatabase) {
             }
             return repository!!
         }
+    }
+
+    fun getLiveDataUser(): LiveData<List<User>> {
+        return database.userDao().getLiveDataUsers()
     }
 }

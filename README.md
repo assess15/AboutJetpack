@@ -2,11 +2,33 @@
 
 ![jetpack](./png/android-jetpack.jpg)
 
+
+
+| Foundation        | Architecture | Behavior         | UI                      |
+| ----------------- | ------------ | ---------------- | ----------------------- |
+| Android KTX       | DataBinding  | CameraX          | Animation & transitions |
+| AppCompat         | Lifecycles   | Media & playback | Emoji                   |
+| Car               | LiveData     | Notifications    | Fragment                |
+| Benchmark         | Navigation   | Permissions      | Layout                  |
+| MultiDex          | Paging       | Preferences      | Palette                 |
+| Security          | Room         | Sharing          | ViewPager2              |
+| Test              | ViewModel    | Slices           | WebView                 |
+| TV                | WorkManager  | -                | -                       |
+| Wear OS by Google | -            | -                | -                       |
+
+
+
+```
 版本说明:
 - alpha:内测版
 - beta :公测版
 - rc   :候选版本，和发布版本一致
 - stable:稳定版本
+```
+
+
+
+---
 
 ### 架构
 

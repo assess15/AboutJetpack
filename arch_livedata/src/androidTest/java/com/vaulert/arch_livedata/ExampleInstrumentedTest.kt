@@ -3,6 +3,8 @@ package com.vaulert.arch_livedata
 import android.content.Intent
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import com.vaulert.arch_livedata.demo.LiveDataActivity
+import com.vaulert.arch_livedata.demo.LiveDataUtil
 import org.junit.Test
 import org.junit.runner.RunWith
 

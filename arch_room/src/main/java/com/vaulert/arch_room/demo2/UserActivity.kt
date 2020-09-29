@@ -64,15 +64,18 @@ class UserActivity : AppCompatActivity() {
     private fun insertUser() {
         lifecycleScope.launchWhenCreated {
             val i = (1..1000).shuffled().last()
-            viewModel.insertUser(User("$i", "张三儿$i", "1$i", cars))
+            viewModel.insertUser(User(i, "张三儿$i", "1$i", cars, "男", 10, "tag"))
         }
     }
 
     private fun initCheck() {
         lifecycleScope.launchWhenCreated {
-            val queryUser = viewModel.queryUser()
-            tvContent.text = queryUser.toString()
+//            val queryUser = viewModel.queryUser()
+//            tvContent.text = queryUser.toString()
         }
+
+        val liveDataUser = viewModel.getLiveDataUser()
+        tvContent.text = liveDataUser.toString()
     }
 
     private fun clearUser() {

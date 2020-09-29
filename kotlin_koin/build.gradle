@@ -6,7 +6,11 @@ if (isModule.toBoolean()) {
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
-apply plugin: 'koin'
+/** pick one
+ * apply plugin:'koin'
+ * classpath "org.koin:koin-gradle-plugin:$koin_version"
+ */
+//apply plugin: 'koin'
 
 android {
     compileSdkVersion 30
@@ -37,9 +41,11 @@ dependencies {
     implementation project(':lib_base')
 
     // Koin for Ktor Kotlin
-    implementation "org.koin:koin-ktor:$koin_version"
+//    implementation "org.koin:koin-ktor:$koin_version"
     // Koin for Kotlin
     implementation "org.koin:koin-core:$koin_version"
+    // Koin extended & experimental features
+    implementation "org.koin:koin-core-ext:$koin_version"
     // Koin AndroidX Scope features
     implementation "org.koin:koin-androidx-scope:$koin_version"
     // Koin AndroidX ViewModel features

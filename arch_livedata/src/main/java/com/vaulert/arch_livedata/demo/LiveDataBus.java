@@ -1,4 +1,4 @@
-package com.vaulert.arch_livedata;
+package com.vaulert.arch_livedata.demo;
 
 import android.os.Looper;
 

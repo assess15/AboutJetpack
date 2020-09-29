@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [User::class], version = 1, exportSchema = true)
+@Database(entities = [User::class], version = 6, exportSchema = true)
 abstract class UsersDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
@@ -21,6 +21,10 @@ abstract class UsersDatabase : RoomDatabase() {
 
         private fun buildDatabase(context: Context) =
             Room.databaseBuilder(context.applicationContext, UsersDatabase::class.java, "user.db")
+                // 更新完表后,可以删除
+                .addMigrations(MIGRATION_5_6)
+                // 破坏性迁移,先删除以前数据库,再新建
+//                .fallbackToDestructiveMigration()
                 .build()
     }
 }

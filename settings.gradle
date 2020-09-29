@@ -1,3 +1,4 @@
+include ':behavior_camerax'
 include ':kotlin_koin'
 include ':app'
 include ':lib_base'

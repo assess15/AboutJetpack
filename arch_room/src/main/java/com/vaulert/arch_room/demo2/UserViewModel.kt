@@ -1,9 +1,6 @@
 package com.vaulert.arch_room.demo2
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 
 class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
@@ -27,5 +24,9 @@ class UserViewModel(private val repository: UserRepository) : ViewModel() {
 
     suspend fun queryUser(): List<User> {
         return repository.queryUser()
+    }
+
+    fun getLiveDataUser() :LiveData<List<User>>{
+        return repository.getLiveDataUser()
     }
 }
