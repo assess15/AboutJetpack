@@ -20,9 +20,9 @@
 
 ```
 版本说明:
-- alpha:内测版
-- beta :公测版
-- rc   :候选版本，和发布版本一致
+- alpha:内测版(代码改动频繁)
+- beta :公测版(代码改动较小)
+- rc   :候选版本(和发布版本一致)
 - stable:稳定版本
 ```
 
@@ -40,7 +40,7 @@
 
 #### Room
 
-[Room详细](./about_room/Room.md)
+[Room总结](./arch_room/Room.md)
 
 ![Room架构](./png/room_architecture.png)
 
@@ -48,7 +48,7 @@
 
 #### Paging3
 
-[Paging3详细](./about_paging3/Paging3.md)
+[Paging3总结](./arch_paging3/Paging3.md)
 
 ![Paging3架构](./png/paging3-library-architecture.png)
 
@@ -56,11 +56,9 @@
 
 ---
 
-#### Hilt
+#### [Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
 
-[官方文档](https://developer.android.com/training/dependency-injection/hilt-android)
-
-[Hilt详细](./about_hilt/Hilt.md)
+[Hilt总结](./arch_hilt/Hilt.md)
 
 
 
@@ -69,7 +67,7 @@
 
 #### LiveData
 
-[LiveData](./arch_livedata/LiveData.md)
+[LiveData总结](./arch_livedata/LiveData.md)
 
 
 
@@ -77,7 +75,7 @@
 
 #### ViewModel
 
-[ViewModel](./arch_viewmodel/ViewModel.md)
+[ViewModel总结](./arch_viewmodel/ViewModel.md)
 
 
 
@@ -97,16 +95,66 @@
 
 #### ViewPager2
 
+[ViewPager2总结](./ui_viewpager2/ViewPager2.md)
+
 ---
 
 #### MotionLayout
 
-[MotionLayout2](./ui_motionlayout/MotionLayout.md)
+[MotionLayout2总结](./ui_motionlayout/MotionLayout.md)
 
 ---
 
 #### AutoFill
 
 [codelab](https://codelabs.developers.google.com/codelabs/optimize-autofill/#0)
+
+---
+
+
+
+### Kotlin
+
+#### [Koin](https://insert-koin.io/)
+
+#### [Koin总结](./kotlin_koin/Koin.md)
+
+
+
+---
+
+### 其他库
+
+#### [1、Stetho](http://facebook.github.io/stetho/)
+
+Download
+
+```Groovy
+api  'com.facebook.stetho:stetho:1.5.1'
+api  'com.facebook.stetho:stetho-okhttp3:1.5.1'
+```
+
+Setup
+
+```Kotlin
+Stetho.initialize(
+            Stetho.newInitializerBuilder(this)
+                .enableDumpapp(
+                    Stetho.defaultDumperPluginsProvider(this)
+                )
+                .enableWebKitInspector(
+                    Stetho.defaultInspectorModulesProvider(this)
+                )
+                .build()
+        )
+```
+
+Network
+
+```Kotlin
+OkHttpClient.Builder()
+    .addNetworkInterceptor(new StethoInterceptor())
+    .build()
+```
 
 ---

@@ -27,13 +27,15 @@ dependencies {
     implementation project(':lib_base')
 
     // camera
-    def version = "1.0.0-alpha16"
-    api "androidx.camera:camera-core:$version"
-    api "androidx.camera:camera-camera2:$version"
+    def version = "1.0.0-alpha15"
+    def coreVersion = "1.0.0-beta10"
+    api "androidx.camera:camera-core:$coreVersion"
     api "androidx.camera:camera-view:$version"
+    api "androidx.camera:camera-camera2:$coreVersion"
+    api "androidx.camera:camera-lifecycle:$coreVersion"
     api "androidx.camera:camera-extensions:$version"
 
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }

@@ -2,7 +2,7 @@
 
 **@Dao**
 
-Data Assess Object 数据访问对象
+**D**ata **A**ssess **O**bject 数据访问对象
 
 包含增删改查，注意包含耗时操作,需要在子线程中操作
 

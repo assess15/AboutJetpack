@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".CameraActivity">
+
+    <!--    <androidx.camera.view.CameraView-->
+    <!--        android:id="@+id/cameraView"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:captureMode="image"-->
+    <!--        app:flash="auto"-->
+    <!--        app:lensFacing="back"-->
+    <!--        app:pinchToZoomEnabled="true"-->
+    <!--        app:scaleType="fitCenter" />-->
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+<!--    <TextureView-->
+<!--        android:id="@+id/textureView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent" />-->
+</FrameLayout>

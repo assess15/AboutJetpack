@@ -1,6 +1,6 @@
 ## Koin 依赖注入
 
-适用于 Kotlin 开发人员的实用轻量级依赖注入框架。 用纯 Kotlin DSL编写，仅使用功能分辨率：无代理，无代码生成，无反射。
+Koin 轻量级依赖注入框架，用纯 Kotlin DSL编写，无代理，无代码生成，无反射。
 
 [koin](https://insert-koin.io/)
 [android](https://start.insert-koin.io/#/getting-started/koin-for-android)
@@ -103,12 +103,54 @@ class MyApplication : Application() {
 }
 ```
 
+---
+
 ### 关键字
 
 **module**
 
+module 是个容器，注入所需要的对象实例，通常配合factory，single使用
+
+```Kotlin
+val myModule = module {
+	factory { Stove() }
+}
+```
+
+**single**
+
+单例模式
+
+```Kotlin
+val myModule = module{
+	single { Stove() }
+}
+```
+
+
+
 **factory**
+
+```Kotlin
+val myModule = module{
+	factory { Stove() }
+}	
+```
+
+
 
 **scope**
 
+
+
 **get**
+
+注入后,通过get() 获取实例
+
+```Kotlin
+val myModule = module{
+	factory { Stove() }
+	factory { Chef(get()) } // get()
+}
+```
+
