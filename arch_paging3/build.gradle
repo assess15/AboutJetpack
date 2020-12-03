@@ -37,8 +37,8 @@ dependencies {
     implementation project(':lib_base')
 
     // paging3
-    def paging_version = "3.0.0-alpha03"
-    implementation "androidx.paging:paging-runtime:$paging_version"
+    def paging_version = "3.0.0-alpha10"
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
     // room
     api "androidx.room:room-ktx:2.2.5"
@@ -46,7 +46,7 @@ dependencies {
     kapt "androidx.room:room-compiler:2.2.5"
 //    kapt "android.arch.persistence.room:compiler:1.1.1"
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
 }

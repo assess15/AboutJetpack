@@ -12,6 +12,7 @@ include ':arch_room'
 include ':arch_appstartup'
 include ':arch_viewmodel'
 include ':arch_workmanager'
+include ':arch_datastore'
 
 // ui
 include ':ui_autofill'

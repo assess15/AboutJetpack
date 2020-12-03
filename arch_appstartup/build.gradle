@@ -30,7 +30,7 @@ dependencies {
     implementation project(':lib_base')
 
     // startup
-    api "androidx.startup:startup-runtime:1.0.0-beta01"
+    api "androidx.startup:startup-runtime:1.0.0"
     // timber
     api "com.jakewharton.timber:timber:4.7.1"
 
@@ -39,7 +39,7 @@ dependencies {
     api "androidx.work:work-runtime:$version"
     api "androidx.work:work-testing:$version"
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
 }
