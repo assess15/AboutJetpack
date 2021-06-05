@@ -1,0 +1,42 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        applicationId "com.laychv.behavior_camerax"
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildFeatures {viewBinding = true}
+}
+
+dependencies {
+    implementation project(':lib_base')
+
+    // camera
+    def version = "1.0.0-alpha19"
+    def coreVersion = "1.0.0-beta12"
+    api "androidx.camera:camera-core:$coreVersion"
+    api "androidx.camera:camera-view:$version"
+    api "androidx.camera:camera-camera2:$coreVersion"
+    api "androidx.camera:camera-lifecycle:$coreVersion"
+    api "androidx.camera:camera-extensions:$version"
+
+    testImplementation "junit:junit:$junit_version"
+    androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_core_version"
+}

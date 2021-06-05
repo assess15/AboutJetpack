@@ -1,23 +1,27 @@
-include ':behavior_camerax'
 include ':kotlin_koin'
 include ':app'
 include ':lib_base'
 
 // arch
-include ':arch_hilt'
-include ':arch_lifecycle'
-include ':arch_livedata'
-include ':arch_paging3'
-include ':arch_room'
-include ':arch_appstartup'
-include ':arch_viewmodel'
-include ':arch_workmanager'
-include ':arch_datastore'
+include ':arch:compose'
+include ':arch:hilt'
+include ':arch:lifecycle'
+include ':arch:livedata'
+include ':arch:paging3'
+include ':arch:room'
+include ':arch:appstartup'
+include ':arch:viewmodel'
+include ':arch:workmanager'
+include ':arch:datastore'
+
+// behavior
+include ':behavior:camerax'
 
 // ui
-include ':ui_autofill'
-include ':ui_constraintlayout2'
-include ':ui_motionlayout'
-include ':ui_viewpager2'
+include ':ui:autofill'
+include ':ui:constraintlayout2'
+include ':ui:motionlayout'
+include ':ui:viewpager2'
 
 rootProject.name = "StartJetpack"
+include ':lib_hwscan'
