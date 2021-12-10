@@ -4,7 +4,6 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -31,7 +30,7 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures { dataBinding = true }
+    buildFeatures { viewBinding true }
 }
 
 dependencies {
@@ -54,9 +53,7 @@ dependencies {
 //    kapt "android.arch.persistence.room:compiler:1.1.1"
 
     // koin
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-ext:$koin_version"
+    implementation "io.insert-koin:koin-android:$koin_version"
 
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$ext_junit_version"

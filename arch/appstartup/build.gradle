@@ -4,7 +4,6 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -24,7 +23,7 @@ android {
         sourceCompatibility 1.8
         targetCompatibility 1.8
     }
-    buildFeatures {viewBinding = true}
+    buildFeatures { viewBinding true }
 }
 
 dependencies {

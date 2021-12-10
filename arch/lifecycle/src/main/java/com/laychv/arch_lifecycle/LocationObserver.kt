@@ -10,12 +10,12 @@ class LocationObserver(context: Context) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_RESUME)
     fun startLocation() {
-        Log.d("aaa","开始定位.....")
+        Log.d("aaa", "开始定位.....")
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun stopLocation() {
-        Log.d("aaa","停止定位.....")
+        Log.d("aaa", "停止定位.....")
     }
 
 }

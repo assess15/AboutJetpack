@@ -4,7 +4,6 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 30
@@ -26,20 +25,20 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    
-        compileOptions {
-            sourceCompatibility 1.8
-            targetCompatibility 1.8
-        }
-    
-    buildFeatures {viewBinding = true}
+
+    compileOptions {
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    buildFeatures { viewBinding true }
 }
 
 dependencies {
     implementation project(':lib_base')
 
     // lifecycle
-    def lifecycle_version = "2.2.0"
+    def lifecycle_version = "2.3.1"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
     // LiveData

@@ -5,22 +5,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_vp.*
+import com.laychv.ui_viewpager2.databinding.FragmentVpBinding
 
 class ViewPager2Fragment : Fragment() {
+
+    private lateinit var binding: FragmentVpBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return LayoutInflater.from(context).inflate(R.layout.fragment_vp, container, false)
+        binding = FragmentVpBinding.inflate(LayoutInflater.from(context), container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val string = arguments?.getString("aa")
-        tvName.text = string
+        binding.tvName.text = string
     }
 
     companion object {

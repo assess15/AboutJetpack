@@ -4,13 +4,16 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayoutMediator
-import kotlinx.android.synthetic.main.activity_viewpager2.*
+import com.laychv.ui_viewpager2.databinding.ActivityViewpager2Binding
 
 class ViewPager2Activity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityViewpager2Binding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_viewpager2)
+        binding = ActivityViewpager2Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initView()
     }
@@ -22,9 +25,9 @@ class ViewPager2Activity : AppCompatActivity() {
         title.add("B")
         title.add("C")
 
-        viewPager.setPageTransformer(ZoomOutPageTransformer())
+        binding.viewPager.setPageTransformer(ZoomOutPageTransformer())
 
-        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+        binding.viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
             }
@@ -42,11 +45,11 @@ class ViewPager2Activity : AppCompatActivity() {
             }
         })
 
-        viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        binding.viewPager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
-        viewPager.adapter = ViewPager2Adapter(this, title)
+        binding.viewPager.adapter = ViewPager2Adapter(this, title)
 
-        TabLayoutMediator(tabs, viewPager) { tab, position ->
+        TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->
             tab.text = title[position]
         }.attach()
     }

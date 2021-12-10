@@ -7,13 +7,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.laychv.arch_paging3.R
+import com.laychv.arch_paging3.databinding.ActivityPagingBinding
 import com.laychv.arch_paging3.paging3_room.base.BaseActivity
 import com.laychv.arch_paging3.paging3_room.comm.InjectFactory
 import com.laychv.arch_paging3.paging3_room.ui.adapter.PagingAdapter
 import com.laychv.arch_paging3.paging3_room.ui.adapter.PagingFooterAdapter
 import com.laychv.arch_paging3.paging3_room.ui.viewmodel.PagingViewModel
-import kotlinx.android.synthetic.main.activity_paging.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.collectLatest
 
@@ -21,10 +20,12 @@ class PagingRoomActivity : BaseActivity<PagingViewModel>() {
 
     private val adapter: PagingAdapter by lazy { PagingAdapter() }
     private var job: Job? = null
+    private lateinit var binding: ActivityPagingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_paging)
+        binding = ActivityPagingBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initAdapter()
     }
@@ -35,10 +36,10 @@ class PagingRoomActivity : BaseActivity<PagingViewModel>() {
 
     private fun initAdapter() {
 
-        rvList.layoutManager = LinearLayoutManager(this)
+        binding.rvList.layoutManager = LinearLayoutManager(this)
 
         // set footer
-        rvList.adapter = adapter.withLoadStateFooter(PagingFooterAdapter(adapter))
+        binding.rvList.adapter = adapter.withLoadStateFooter(PagingFooterAdapter(adapter))
 
         lifecycleScope.launchWhenCreated {
             viewModel.getArticles(this@PagingRoomActivity, Observer {
@@ -62,13 +63,13 @@ class PagingRoomActivity : BaseActivity<PagingViewModel>() {
             adapter.loadStateFlow.collectLatest {
                 when (it.refresh) {
                     is LoadState.Loading -> {
-                        swipeRefresh.isRefreshing = true
+                        binding.swipeRefresh.isRefreshing = true
                     }
                     is LoadState.NotLoading -> {
-                        swipeRefresh.isRefreshing = false
+                        binding.swipeRefresh.isRefreshing = false
                     }
                     is LoadState.Error -> {
-                        swipeRefresh.isRefreshing = false
+                        binding.swipeRefresh.isRefreshing = false
                     }
                 }
             }
@@ -88,7 +89,7 @@ class PagingRoomActivity : BaseActivity<PagingViewModel>() {
             }
         }
 
-        swipeRefresh.setOnRefreshListener {
+        binding.swipeRefresh.setOnRefreshListener {
             adapter.refresh()
         }
     }

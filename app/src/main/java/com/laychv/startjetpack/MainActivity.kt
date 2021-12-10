@@ -1,11 +1,13 @@
 package com.laychv.startjetpack
 
-import androidx.appcompat.app.AppCompatActivity
+import android.app.Activity
 import android.os.Bundle
+import com.laychv.startjetpack.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        val inflate = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(inflate.root)
     }
 }

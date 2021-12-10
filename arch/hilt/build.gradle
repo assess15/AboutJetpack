@@ -4,7 +4,6 @@ if (isModule.toBoolean()) {
     apply plugin: 'com.android.library'
 }
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 apply plugin: 'dagger.hilt.android.plugin'
@@ -34,9 +33,9 @@ android {
 
     }
 
-    buildFeatures {dataBinding = true}
-    
-    buildFeatures {viewBinding = true}
+    buildFeatures { dataBinding = true }
+
+    buildFeatures { viewBinding true }
 
     compileOptions {
         sourceCompatibility 1.8

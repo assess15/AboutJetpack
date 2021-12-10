@@ -3,16 +3,19 @@ package com.laychv.ui_motionlayout
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_login.*
+import com.laychv.ui_motionlayout.databinding.ActivityLoginBinding
 
-class LoginActivity :AppCompatActivity(){
+class LoginActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivityLoginBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
+        binding = ActivityLoginBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        tv_action_login.setOnClickListener {
-            pb_login_progress.visibility = View.VISIBLE
+        binding.login.setOnClickListener {
+            binding.progress.visibility = View.VISIBLE
         }
     }
 }

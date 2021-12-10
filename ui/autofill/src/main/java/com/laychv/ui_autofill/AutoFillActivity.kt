@@ -6,15 +6,17 @@ import android.util.Log
 import android.view.View
 import android.view.autofill.AutofillManager
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_autofill.*
+import com.laychv.ui_autofill.databinding.ActivityAutofillBinding
 
 class AutoFillActivity : AppCompatActivity() {
 
     private var afm: AutofillManager? = null
+    private lateinit var binding: ActivityAutofillBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_autofill)
+        binding = ActivityAutofillBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initView()
     }
@@ -23,7 +25,7 @@ class AutoFillActivity : AppCompatActivity() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 afm = getSystemService(AutofillManager::class.java) as AutofillManager
-                afm?.requestAutofill(tvUsername)
+                afm?.requestAutofill(binding.tvUsername)
             }
         }
     }
@@ -48,13 +50,13 @@ class AutoFillActivity : AppCompatActivity() {
                 super.onAutofillEvent(view, event)
                 when (event) {
                     EVENT_INPUT_UNAVAILABLE -> {
-                        Log.d("aa","不可见")
+                        Log.d("aa", "不可见")
                     }
                     EVENT_INPUT_HIDDEN -> {
-                        Log.d("aa","隐藏")
+                        Log.d("aa", "隐藏")
                     }
                     EVENT_INPUT_SHOWN -> {
-                        Log.d("aa","可见")
+                        Log.d("aa", "可见")
                     }
                     else -> {
 

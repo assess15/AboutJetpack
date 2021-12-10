@@ -5,12 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import com.laychv.arch_room.R
-import kotlinx.android.synthetic.main.activity_main.*
+import com.laychv.arch_room.databinding.ActivityMainBinding
 
 class UserActivity : AppCompatActivity() {
 
     var name: String = ""
     private val cars: MutableList<Car> = arrayListOf()
+    private lateinit var binding: ActivityMainBinding
 //    private val vm: MainViewModel by viewModels()
 //    private val vm by viewModels<MainViewModel>()
 //    private val vm by viewModels<MainViewModel>()
@@ -24,6 +25,7 @@ class UserActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(R.layout.activity_main)
 
         cars.add(Car("兰博基尼", "蓝色"))
@@ -32,15 +34,15 @@ class UserActivity : AppCompatActivity() {
 
         initData()
 
-        btnInsert.setOnClickListener {
+        binding.btnInsert.setOnClickListener {
             insertUser()
         }
 
-        btnCheck.setOnClickListener {
+        binding.btnCheck.setOnClickListener {
             initCheck()
         }
 
-        btnClear.setOnClickListener {
+        binding.btnClear.setOnClickListener {
             clearUser()
         }
     }
@@ -57,7 +59,7 @@ class UserActivity : AppCompatActivity() {
          * Fragment -> viewLifecycleOwner
          */
         viewModel.dataLiveData.observe(this, {
-            tvContent.text = it.toString()
+            binding.tvContent.text = it.toString()
         })
     }
 
@@ -75,14 +77,14 @@ class UserActivity : AppCompatActivity() {
         }
 
         val liveDataUser = viewModel.getLiveDataUser()
-        tvContent.text = liveDataUser.toString()
+        binding.tvContent.text = liveDataUser.toString()
     }
 
     private fun clearUser() {
         lifecycleScope.launchWhenCreated {
             viewModel.clearUser()
             val queryUser = viewModel.queryUser()
-            tvContent.text = queryUser.toString()
+            binding.tvContent.text = queryUser.toString()
         }
     }
 

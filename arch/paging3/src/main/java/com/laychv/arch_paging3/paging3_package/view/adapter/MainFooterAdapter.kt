@@ -2,12 +2,14 @@ package com.laychv.arch_paging3.paging3_package.view.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.LinearLayout
+import android.widget.ProgressBar
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
 import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.laychv.arch_paging3.R
-import kotlinx.android.synthetic.main.layout_footer.view.*
+import com.laychv.arch_paging3.databinding.FooterLayoutBinding
 
 /**
  * Footer
@@ -26,17 +28,18 @@ class MainFooterAdapter(private val retry: () -> Unit) :
 }
 
 class NetworkStateViewHolder(parent: ViewGroup, val retry: () -> Unit) : RecyclerView.ViewHolder(
-    LayoutInflater.from(parent.context).inflate(R.layout.layout_footer, parent, false)
+    FooterLayoutBinding.inflate(LayoutInflater.from(parent.context), parent, false).root
 ) {
 
     init {
-        itemView.mRetry.setOnClickListener {
+        itemView.findViewById<LinearLayout>(R.id.mRetry).setOnClickListener {
             retry.invoke()
         }
     }
 
     fun bind(loadState: LoadState) {
-        itemView.mProgressBar.isVisible = loadState is LoadState.Loading
-        itemView.mRetry.isVisible = loadState is LoadState.Error
+        itemView.findViewById<ProgressBar>(R.id.mProgressBar).isVisible =
+            loadState is LoadState.Loading
+        itemView.findViewById<LinearLayout>(R.id.mRetry).isVisible = loadState is LoadState.Error
     }
 }

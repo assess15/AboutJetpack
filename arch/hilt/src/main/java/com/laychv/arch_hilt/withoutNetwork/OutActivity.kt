@@ -10,7 +10,6 @@ import com.laychv.arch_hilt.R
 import com.laychv.arch_hilt.databinding.ActivityOutBinding
 import com.laychv.arch_hilt.withNetwork.ui.view.MainActivity
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_out.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -36,8 +35,8 @@ class OutActivity : AppCompatActivity() {
             this,
             R.layout.activity_out
         )
-        textView.text = hash
-        textView2.text = offerString
+        binding.textView.text = hash
+        binding.textView2.text = offerString
         Log.d("aaa", viewModel.getRepositoryString())
         Log.d("aaa", offerString!!)
 

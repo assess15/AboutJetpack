@@ -4,26 +4,26 @@ import android.os.Bundle
 import android.widget.FrameLayout
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.laychv.arch_hilt.R
+import com.laychv.arch_hilt.databinding.ActivitySampleBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_sample.*
 
 @AndroidEntryPoint
 class SimpleActivity : AppCompatActivity() {
 
     private val vm: SimpleViewModel by viewModels()
+    private lateinit var binding: ActivitySampleBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sample)
+        binding = ActivitySampleBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        tv.text = vm.getINJString()
+        binding.tv.text = vm.getINJString()
 
         val tv = vm.tv()
-        frame.layoutParams.height = FrameLayout.LayoutParams.MATCH_PARENT
-        frame.layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT
-        frame.addView(tv)
+        binding.frame.layoutParams.height = FrameLayout.LayoutParams.MATCH_PARENT
+        binding.frame.layoutParams.width = FrameLayout.LayoutParams.MATCH_PARENT
+        binding.frame.addView(tv)
         tv.text = "看到这句没? 这是注入的TextView显示的"
     }
-
 }
