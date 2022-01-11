@@ -118,7 +118,7 @@ allprojects {
 > - 如果使用 @AndroidEntryPoint 注解 Android 类，必须在它依赖的 Android 类添加同样的注解，例如在 **Fragment 中添加 @AndroidEntryPoint 注解，必须在 Fragment 依赖的 Activity 上也添加 @AndroidEntryPoint 注解** , 否则会抛出以下异常。
 >
 >   ```Java
->   java.lang.IllegalStateException: Hilt Fragments must be attached to an @AndroidEntryPoint Activity. Found: class com.hi.dhl.hilt.MainActivity
+>   java.lang.IllegalStateException: Hilt Fragments must be attached to an @AndroidEntryPoint Activity. Found: class com.hi.dhl.hilt.com.demo.mlkt_scan.MainActivity
 >   ```
 >
 >

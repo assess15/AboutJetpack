@@ -24,4 +24,6 @@ include ':ui:motionlayout'
 include ':ui:viewpager2'
 
 rootProject.name = "StartJetpack"
-include ':lib_hwscan'
+include ':lib_hw_scan'
+include ':lib_mlkt_scan'
+include ':lib_network'

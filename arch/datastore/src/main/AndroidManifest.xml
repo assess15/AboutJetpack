@@ -8,7 +8,7 @@
         android:theme="@style/BaseAppTheme">
 
         <activity
-            android:name="com.laychv.arch_datastore.MainActivity"
+            android:name="com.laychv.arch_datastore.com.demo.mlkt_scan.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

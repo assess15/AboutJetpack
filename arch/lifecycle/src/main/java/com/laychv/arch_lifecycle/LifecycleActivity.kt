@@ -1,10 +1,12 @@
 package com.laychv.arch_lifecycle
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.add
 import androidx.fragment.app.commit
 import com.laychv.arch_lifecycle.databinding.ActivityLifecycleBinding
+import com.laychv.arch_lifecycle.mvp.MVPActivity
 
 class LifecycleActivity : AppCompatActivity() {
 
@@ -17,7 +19,10 @@ class LifecycleActivity : AppCompatActivity() {
 
         initLocationObserver()
 
-        initFrag()
+        binding.btnMvp.setOnClickListener {
+            startActivity(Intent(this, MVPActivity::class.java))
+        }
+        injectFragment()
     }
 
     private fun initLocationObserver() {
@@ -25,10 +30,11 @@ class LifecycleActivity : AppCompatActivity() {
 //        val method = clazz.getDeclaredMethod("getLifecycle")
 //        val invoke = method.invoke(clazz)
 //        invoke.addObserver(LocationObserver(this))
-        lifecycle.addObserver(LocationObserver(this))
+        lifecycle.addObserver(LocationObserver())
     }
 
-    private fun initFrag() {
+    private fun injectFragment() {
+
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add<LifecycleFragment>(R.id.container)
@@ -37,6 +43,6 @@ class LifecycleActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        lifecycle.removeObserver(LocationObserver(this))
+        lifecycle.removeObserver(LocationObserver())
     }
 }

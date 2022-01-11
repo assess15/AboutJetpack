@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/showBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示" />
+
+    <Button
+        android:id="@+id/hideBTN"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="隐藏" />
+
+    <ViewStub
+        android:id="@+id/stub"
+        android:layout_width="120dip"
+        android:layout_height="40dip"
+        android:inflatedId="@+id/subTree"
+        android:layout="@layout/item" />
+
+</LinearLayout>

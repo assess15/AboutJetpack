@@ -15,14 +15,16 @@
         android:usesCleartextTraffic="true"
         tools:ignore="UnusedAttribute">
 
-        <activity android:name=".paging3.ui.view.PagingActivity">
+        <activity
+            android:name=".paging3.ui.view.PagingActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--        <activity android:name="com.laychv.arch_paging3.paging3_package.view.activity.MainActivity">-->
+        <!--        <activity android:name="com.laychv.arch_paging3.paging3_package.view.activity.com.demo.mlkt_scan.MainActivity">-->
         <!--            <intent-filter>-->
         <!--                <action android:name="android.intent.action.MAIN" />-->
         <!--                <category android:name="android.intent.category.LAUNCHER" />-->
