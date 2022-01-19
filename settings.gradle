@@ -22,6 +22,7 @@ include ':ui:autofill'
 include ':ui:constraintlayout2'
 include ':ui:motionlayout'
 include ':ui:viewpager2'
+include ':ui:splashscreen'
 
 rootProject.name = "StartJetpack"
 include ':lib_hw_scan'
