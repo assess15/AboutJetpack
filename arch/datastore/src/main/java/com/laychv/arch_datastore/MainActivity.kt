@@ -36,9 +36,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        userPreferences.bookmark.asLiveData().observe(this, {
+        userPreferences.bookmark.asLiveData().observe(this) {
             binding.tv.text = it
-        })
+        }
 
         binding.clear.setOnClickListener {
             lifecycleScope.launch {

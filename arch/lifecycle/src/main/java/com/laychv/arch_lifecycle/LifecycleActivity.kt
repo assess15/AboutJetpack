@@ -23,6 +23,13 @@ class LifecycleActivity : AppCompatActivity() {
             startActivity(Intent(this, MVPActivity::class.java))
         }
         injectFragment()
+
+        binding.btnDialog.setOnClickListener {
+            TipDialog(this).show()
+        }
+        binding.btnDialog2.setOnClickListener {
+            TipDialog2(this).show()
+        }
     }
 
     private fun initLocationObserver() {

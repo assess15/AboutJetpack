@@ -27,8 +27,8 @@ class MainViewModel : ViewModel() {
 //            val value = setting[counter] ?: 0
 //            setting[counter] = value + 2
 
-            var i = setting[counter]
-            Logger.d("${i}")
+            val i = setting[counter]
+            Logger.d("$i")
         }
     }
 

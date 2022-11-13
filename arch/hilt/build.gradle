@@ -6,15 +6,15 @@ if (isModule.toBoolean()) {
 apply plugin: 'kotlin-android'
 
 apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+//apply plugin: 'dagger.hilt.android.plugin'
 
 // for hilt
 kapt {
     correctErrorTypes true
 }
-hilt {
-    enableTransformForLocalTests = true
-}
+//hilt {
+//    enableTransformForLocalTests = true
+//}
 
 android {
     compileSdkVersion 30

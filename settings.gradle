@@ -25,6 +25,6 @@ include ':ui:viewpager2'
 include ':ui:splashscreen'
 
 rootProject.name = "StartJetpack"
-include ':lib_hw_scan'
-include ':lib_mlkt_scan'
+include ':module:hw_scan'
+include ':module:mlkit_scan'
 include ':lib_network'
